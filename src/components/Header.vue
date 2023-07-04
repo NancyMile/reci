@@ -56,6 +56,7 @@
                         id="ingredient"
                         class="p-3 w-full rounded-lg focus:outline-none"
                         placeholder="Name"
+                        v-model="store.search.name"
                     >
                 </div>
                 <div class=" space-y-4">
@@ -66,6 +67,7 @@
                         name="category"
                         id="category"
                         class="p-3 w-full rounded-lg focus:outline-none"
+                        v-model="store.search.category"
                     >
                     <option value="">-- Select --</option>
                     <option
