@@ -1,5 +1,11 @@
 <script setup>
-import { RouterLink } from 'vue-router';
+    import { computed } from 'vue';
+    import { RouterLink, useRoute } from 'vue-router';
+
+    const route = useRoute()
+    //console.log(route)
+
+    const homePage = computed(() => route.name === 'home')
 
 </script>
 
@@ -31,6 +37,7 @@ import { RouterLink } from 'vue-router';
                 </nav>
             </div>
             <form
+                v-if="homePage"
                 class="md:w-1/2 2xl:w-1/3 bg-orange-400 my-32 p-10 rounded-lg shadow space-y-6"
             >
                 <div class=" space-y-4">
