@@ -10,7 +10,9 @@
 </script>
 
 <template>
-    <header class="bg-slate-800">
+    <header class="bg-slate-800"
+        :class="{header: homePage}"
+    >
         <div class="mx-auto container px-5 py-16">
             <div class="flex justify-between items-center">
                 <div>
@@ -74,3 +76,11 @@
         </div>
     </header>
 </template>
+
+<style>
+    .header{
+        background-image: url('/img/bg.jpg');
+        background-size: cover;
+        background-position: center;
+    }
+</style>
