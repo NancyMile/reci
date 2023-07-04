@@ -29,6 +29,7 @@ export const useDrinksStore = defineStore('drinks', () => {
     return {
         categories,
         search,
-        getRecipes
+        getRecipes,
+        recipes
     }
 })
