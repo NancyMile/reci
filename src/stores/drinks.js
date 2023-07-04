@@ -14,10 +14,15 @@ export const useDrinksStore = defineStore('drinks', () => {
         const { data: { drinks} } = await axios('https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list')
         //console.log(drinks)
         categories.value = drinks
-     })
+    })
+
+    function getRecipes() {
+        console.log('Quering API')
+    }
 
     return {
         categories,
-        search
+        search,
+        getRecipes
     }
 })
