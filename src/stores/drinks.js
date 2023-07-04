@@ -11,14 +11,19 @@ export const useDrinksStore = defineStore('drinks', () => {
         category: ''
     })
 
+    const recipes = ref([])
+
     onMounted( async () => {
         const { data: { drinks} } = await APIService.getCategories()
         //console.log(drinks)
         categories.value = drinks
     })
 
-    function getRecipes() {
-        console.log('Quering API')
+    async function getRecipes() {
+        //console.log('Quering API')
+        const { data: { drinks} } = await APIService.searchRecipe(search)
+        //console.log(drinks)
+        recipes.value = drinks
     }
 
     return {
