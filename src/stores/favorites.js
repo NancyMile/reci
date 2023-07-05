@@ -8,6 +8,10 @@ export const useFavoritesStore = defineStore('favorites', () => {
 
     const favorites = ref([])
 
+    onMounted(() => {
+        favorites.value = JSON.parse(localStorage.getItem('favorites')) ?? []
+    })
+
     watch(favorites, () => {
         synchronizeLocalStorage()
     }, {
