@@ -1,4 +1,4 @@
-import { ref, onMounted, reactive } from "vue";
+import { ref, onMounted, reactive, computed } from "vue";
 import { defineStore } from "pinia";
 import axios from "axios";
 import APIService from "../services/APIService";
@@ -41,12 +41,15 @@ export const useDrinksStore = defineStore('drinks', () => {
         modal.handleClickModal()
     }
 
+    const noRecipes = computed(() => recipes.value.length === 0)
+
     return {
         categories,
         search,
         getRecipes,
         recipes,
         selectDrink,
-        recipe
+        recipe,
+        noRecipes
     }
 })
