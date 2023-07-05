@@ -1,4 +1,8 @@
 <script setup>
+    import { useDrinksStore } from '../stores/drinks'
+
+    const drinks = useDrinksStore()
+
     defineProps({
         recipe: {
             type: Object
@@ -19,6 +23,7 @@
             <h2 class="text-2xl truncate font-extrabold">{{ recipe.strDrink }}</h2>
             <button
                 class="bg-orange-400  hover:bg-orange-500 mt-5 w-full p-3 font-bold text-white text-lg"
+                @click="drinks.selectDrink(recipe.idDrink)"
             >
                 Recipe
             </button>
