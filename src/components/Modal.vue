@@ -17,7 +17,7 @@ const formatIngredients = () => {
             const measure = drinks.recipe[`strMeasure${i}`]
 
             const ingredientMeasure = document.createElement('P')
-            ingredientMeasure.classList.add('text-lg')
+            ingredientMeasure.classList.add('text-lg', 'text-gray-500')
             ingredientMeasure.textContent = `${ingredient} - ${measure}`
 
             ingredientsDiv.appendChild(ingredientMeasure)
@@ -45,12 +45,18 @@ const formatIngredients = () => {
                     </DialogTitle>
                     <img
                         :src="drinks.recipe.strDrinkThumb"
-                        :alt="'Image ' +drinks.recipe.strDrink">
+                        :alt="'Image ' +drinks.recipe.strDrink"
+                        class="mx-auto w-96"
+                    >
                     <DialogTitle as="h3" class="text-gray-900 text-4xl font-extrabold">
                         Ingredients and Mesure
                     </DialogTitle>
                     <div v-html="formatIngredients().outerHTML">
                     </div>
+                    <DialogTitle as="h3" class="text-gray-900 text-4xl font-extrabold">
+                        Instructions
+                    </DialogTitle>
+                    <p class=" text-lg text-gray-500"> {{ drinks.recipe.strInstructions }} </p>
                   </div>
                 </div>
                 <div class="mt-5 sm:mt-6 flex justify-between gap-4">
