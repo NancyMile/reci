@@ -2,8 +2,12 @@ import { ref, onMounted, reactive } from "vue";
 import { defineStore } from "pinia";
 import axios from "axios";
 import APIService from "../services/APIService";
+import { useModalStore } from '../stores/modal'
 
-export const useDrinksStore = defineStore('drinks', () => { 
+export const useDrinksStore = defineStore('drinks', () => {
+
+    const modal = useModalStore()
+
     const categories = ref([])
 
     const search = reactive({
@@ -30,6 +34,8 @@ export const useDrinksStore = defineStore('drinks', () => {
         //console.log('selecting drink',id)
         const { data: { drinks } } = await APIService.searchRecipe(id)
         console.log(drinks)
+
+        modal.handleClickModal()
     }
 
     return {
