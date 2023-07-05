@@ -7,6 +7,25 @@ import { useDrinksStore } from '../stores/drinks'
 const modal = useModalStore()
 const drinks = useDrinksStore()
 
+const formatIngredients = () => {
+
+    const ingredientsDiv = document.createElement('DIV')
+
+    for (let i = 1; i <= 15; i++) {
+        if (drinks.recipe[`strIngredient${i}`]) {
+            const ingredient = drinks.recipe[`strIngredient${i}`]
+            const measure = drinks.recipe[`strMeasure${i}`]
+
+            const ingredientMeasure = document.createElement('P')
+            ingredientMeasure.classList.add('text-lg')
+            ingredientMeasure.textContent = `${ingredient} - ${measure}`
+
+            ingredientsDiv.appendChild(ingredientMeasure)
+        }
+    }
+    return ingredientsDiv
+ }
+
 </script>
 
 <template>
@@ -27,6 +46,11 @@ const drinks = useDrinksStore()
                     <img
                         :src="drinks.recipe.strDrinkThumb"
                         :alt="'Image ' +drinks.recipe.strDrink">
+                    <DialogTitle as="h3" class="text-gray-900 text-4xl font-extrabold">
+                        Ingredients and Mesure
+                    </DialogTitle>
+                    <div v-html="formatIngredients().outerHTML">
+                    </div>
                   </div>
                 </div>
                 <div class="mt-5 sm:mt-6 flex justify-between gap-4">
