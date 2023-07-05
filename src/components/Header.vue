@@ -2,18 +2,28 @@
     import { computed } from 'vue';
     import { RouterLink, useRoute } from 'vue-router';
     import { useDrinksStore } from '../stores/drinks'
+    import {useNotificationsStore } from '../stores/notifications'
 
     const route = useRoute()
     //console.log(route)
 
     const store = useDrinksStore()
-    console.log(store)
+    //console.log(store)
+
+    const notifications = useNotificationsStore()
+
 
     const homePage = computed(() => route.name === 'home')
 
     const handleSubmit = () => {
         //console.log('Sending')
-
+        //validate
+        if (Object.values(store.search).includes('')) {
+            notifications.text = 'Name or category missing'
+            notifications.show = true
+            notifications.error = true
+            return
+        }
         store.getRecipes()
     }
 
