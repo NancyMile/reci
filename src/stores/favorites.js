@@ -22,10 +22,21 @@ export const useFavoritesStore = defineStore('favorites', () => {
         localStorage.setItem('favorites',JSON.stringify(favorites.value))
      }
 
-    const handleFavorites = () => { 
-        //console.log('adding ....'+drinks.recipe.strDrink)
-        favorites.value.push(drinks.recipe)
+
+    const favoriteExist = (id) => {
+        const favoritesLocalStorage = JSON.parse(localStorage.getItem('favorites')) ?? []
+        return favoritesLocalStorage.some(favorite =>favorite.idDrink === id)
     }
+
+    const handleFavorites = () => {
+        if (favoriteExist(drinks.recipe.idDrink)) {
+            console.log('... already a favorite')
+        } else {
+            //console.log('adding ....'+drinks.recipe.strDrink)
+            favorites.value.push(drinks.recipe)
+        }
+    }
+
 
     return {
         handleFavorites,
