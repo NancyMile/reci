@@ -35,6 +35,8 @@ export const useFavoritesStore = defineStore('favorites', () => {
 
     const deleteFavorite = () => {
         favorites.value = favorites.value.filter(favorite => favorite.idDrink !== drinks.recipe.idDrink)
+        notifications.show = true
+        notifications.text = "Removed Sucessfully!"
     }
 
     const handleFavorites = () => {
@@ -44,6 +46,7 @@ export const useFavoritesStore = defineStore('favorites', () => {
         } else {
             //console.log('adding ....'+drinks.recipe.strDrink)
             favorites.value.push(drinks.recipe)
+
             notifications.show = true
             notifications.text = "Added Sucessfully!"
         }
