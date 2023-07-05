@@ -17,6 +17,8 @@ export const useDrinksStore = defineStore('drinks', () => {
 
     const recipes = ref([])
 
+    const recipe = ref({})
+
     onMounted( async () => {
         const { data: { drinks} } = await APIService.getCategories()
         //console.log(drinks)
@@ -33,7 +35,8 @@ export const useDrinksStore = defineStore('drinks', () => {
     async function selectDrink(id) {
         //console.log('selecting drink',id)
         const { data: { drinks } } = await APIService.searchRecipe(id)
-        console.log(drinks)
+        //console.log(drinks)
+        recipe.value = drinks[0] // first postion of the array
 
         modal.handleClickModal()
     }
@@ -43,6 +46,7 @@ export const useDrinksStore = defineStore('drinks', () => {
         search,
         getRecipes,
         recipes,
-        selectDrink
+        selectDrink,
+        recipe
     }
 })
