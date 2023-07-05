@@ -40,7 +40,8 @@ export const useFavoritesStore = defineStore('favorites', () => {
 
     return {
         handleFavorites,
-        favorites
+        favorites,
+        favoriteExist
 
     }
 })
